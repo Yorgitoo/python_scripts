@@ -1,0 +1,49 @@
+import pygame
+
+# Initialize Pygame
+pygame.init()
+
+# Set the dimensions of the screen
+SCREEN_WIDTH = 640
+SCREEN_HEIGHT = 480
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
+# Set the background color to black
+BG_COLOR = (0, 0, 0)
+screen.fill(BG_COLOR)
+
+# Set the initial position and color of the circle
+circle_pos = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
+circle_color = (255, 0, 0)
+
+# Set the radius of the circle
+CIRCLE_RADIUS = 20
+
+# Start the game loop
+running = True
+while running:
+    # Check for events
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            # Change the color of the circle on each click
+            circle_color = pygame.Color(pygame.Color("hsv", (pygame.time.get_ticks() / 10) % 360, 255, 255))
+    
+    # Get the position of the mouse cursor
+    mouse_pos = pygame.mouse.get_pos()
+    
+    # Clear the screen
+    screen.fill(BG_COLOR)
+    
+    # Draw the circle at the current position and color
+    pygame.draw.circle(screen, circle_color, circle_pos, CIRCLE_RADIUS)
+    
+    # Move the circle to the position of the mouse cursor
+    circle_pos = mouse_pos
+    
+    # Update the screen
+    pygame.display.flip()
+
+# Quit Pygame
+pygame.quit()
