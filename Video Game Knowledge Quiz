@@ -1,0 +1,43 @@
+# Import the random module to shuffle the order of the multiple choice answers
+import random
+
+# Set up a dictionary with the questions and their multiple choice answers
+questions = {
+    "What is the best-selling video game of all time?": ["Minecraft", "Tetris", "Grand Theft Auto V", "Super Mario Bros."],
+    "What year was the first PlayStation console released?": ["1994", "1996", "1998", "2000"],
+    "What is the highest-grossing video game franchise of all time?": ["Mario", "Call of Duty", "Pokemon", "Grand Theft Auto"],
+    "What is the name of the main character in The Legend of Zelda?": ["Link", "Zelda", "Ganondorf", "Impa"],
+    "What is the best-selling video game console of all time?": ["PlayStation 2", "Xbox 360", "Nintendo Switch", "Wii"]
+}
+
+# Set up variables to keep track of correct and incorrect answers
+correct_answers = 0
+incorrect_answers = 0
+
+# Loop through the questions dictionary and ask each question
+for question, choices in questions.items():
+    # Shuffle the order of the multiple choice answers
+    random.shuffle(choices)
+    
+    # Print the question and multiple choice answers
+    print(question)
+    for i, choice in enumerate(choices):
+        print(f"{i+1}. {choice}")
+    
+    # Get user input and check if it is a valid choice
+    while True:
+        user_input = input("Enter your answer (1-4): ")
+        if user_input.isdigit() and 1 <= int(user_input) <= 4:
+            break
+        print("Invalid input. Please enter a number between 1 and 4.")
+    
+    # Check if the user's choice is correct and update the correct/incorrect answer counters
+    if choices[int(user_input)-1] == "Minecraft":
+        correct_answers += 1
+        print("Correct!")
+    else:
+        incorrect_answers += 1
+        print("Incorrect.")
+    
+# Print the final score
+print(f"You got {correct_answers} out of {len(questions)} questions correct.")
