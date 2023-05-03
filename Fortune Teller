@@ -1,0 +1,23 @@
+import random
+
+fortunes = [
+    "A beautiful, smart, and loving person will be coming into your life.",
+    "A dubious friend may be an enemy in camouflage.",
+    "A faithful friend is a strong defense.",
+    "A fresh start will put you on your way.",
+    "A golden egg of opportunity falls into your lap this month.",
+    "A good time to finish up old tasks.",
+    "A hunch is creativity trying to tell you something.",
+    "A light heart carries you through all the hard times.",
+    "A single kind word will keep one warm for years.",
+    "A smile is your passport into the hearts of others.",
+    "All your hard work will soon pay off.",
+    "An important person will offer you support.",
+    "The best way to predict your future is to create it."
+]
+
+print("Welcome to the Fortune Teller!")
+input("Press Enter to receive your fortune...")
+
+print("\nYour fortune is:")
+print(random.choice(fortunes))
