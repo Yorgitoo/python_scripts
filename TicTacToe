@@ -1,0 +1,72 @@
+# Define the board as a list of strings
+board = [" ", " ", " ",
+         " ", " ", " ",
+         " ", " ", " "]
+
+# Define a function to print the board
+def print_board():
+    print(board[0] + " | " + board[1] + " | " + board[2])
+    print("--+---+--")
+    print(board[3] + " | " + board[4] + " | " + board[5])
+    print("--+---+--")
+    print(board[6] + " | " + board[7] + " | " + board[8])
+
+# Define a function to check if there is a win
+def check_win(player):
+    # Check rows
+    if board[0] == board[1] == board[2] == player:
+        return True
+    elif board[3] == board[4] == board[5] == player:
+        return True
+    elif board[6] == board[7] == board[8] == player:
+        return True
+    # Check columns
+    elif board[0] == board[3] == board[6] == player:
+        return True
+    elif board[1] == board[4] == board[7] == player:
+        return True
+    elif board[2] == board[5] == board[8] == player:
+        return True
+    # Check diagonals
+    elif board[0] == board[4] == board[8] == player:
+        return True
+    elif board[2] == board[4] == board[6] == player:
+        return True
+    else:
+        return False
+
+# Define the game loop
+current_player = "X"
+while True:
+    # Print the board
+    print_board()
+
+    # Ask for the current player's move
+    move = input(f"{current_player}'s move (1-9): ")
+    move = int(move) - 1
+
+    # Check if the move is valid
+    if board[move] != " ":
+        print("Invalid move, try again.")
+        continue
+
+    # Make the move
+    board[move] = current_player
+
+    # Check for a win
+    if check_win(current_player):
+        print(f"{current_player} wins!")
+        print_board()
+        break
+
+    # Check for a draw
+    if " " not in board:
+        print("Draw!")
+        print_board()
+        break
+
+    # Switch players
+    if current_player == "X":
+        current_player = "O"
+    else:
+        current_player = "X"
